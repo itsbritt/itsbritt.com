@@ -8,7 +8,7 @@ import { Router } from '@reach/router';
 import Home from '../components/Home/Home';
 
 // Pages
-import Projects from './projects';
+import About from './about';
 import Resume from './resume';
 import Blog from './blog';
 import NotFoundPage from './404';
@@ -20,7 +20,7 @@ const IndexPage = () => {
 	return (
 		<Router>
 			<Home path="/" />
-			<Projects path="/projects" />
+			<About path="/about" />
 			<Resume path="/resume" />
 			<Blog path="/blog" />
 			<NotFoundPage default />

@@ -4,22 +4,22 @@ import React from 'react';
 // Gatsby
 import { Link } from 'gatsby';
 
-const NavLink = ({ path, children }) => {
+const NavLink = ({ path, icon, name }) => {
 	return (
 		<Link
 			getProps={({ isCurrent }) => {
-				return isCurrent
-					? {
-							style: {
-								textShadow: ' 0 0 4px #fff',
-								textDecoration: 'underline'
-							}
-					  }
-					: { style: {} };
+				return (
+					isCurrent && {
+						style: {
+							textShadow: ' 0 0 4px #fff',
+							textDecoration: 'underline'
+						}
+					}
+				);
 			}}
-			to={`/${path ? path : ''}`}
+			to={path}
 		>
-			{path ? path : children}
+			{icon ? <i className={`zmdi zmdi-${icon} zdmi-hc-2x"></i>`} /> : name}
 		</Link>
 	);
 };
