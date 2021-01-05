@@ -23,6 +23,7 @@
     "netlify-cms-app": "^2.14.8",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-particles-js": "^3.4.1"
   }
 }
