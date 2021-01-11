@@ -1,5 +1,5 @@
 ---
-title: Var me = this;
+title: var me = this;
 intro: I am a self-taught software engineer with over five years of professional
   experience in three of the major front end frameworks. Although I didn't know
   it at the time, as a philosophy major I was primed for a career in abstract
