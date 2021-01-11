@@ -9,4 +9,5 @@ intro: I am a self-taught software engineer with over five years of professional
   learning as much as possible along the way.
 conclusion: After a period of coast-to-coast exploring, I'm currently settled In
   Austin, TX with my wife, Kelly and bulldog, Hugo.
+image: /assets/wedding_photo.jpg
 ---
