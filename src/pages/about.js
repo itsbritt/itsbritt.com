@@ -3,32 +3,18 @@ import React from 'react';
 // Components
 import Layout from '../components/Layout/Layout';
 
-const About = () => {
+const About = props => {
+	const data = props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
 	return (
 		<Layout className="flex flex-column">
 			<div className="about">
 				<div className="about-blurb">
-					<p className="title">var me = this;</p>
-					<p className="body">
-						I am a self-taught software engineer with over five years of professional experience in three of
-						the major front end frameworks. Although I didn't know it at the time, as a philosophy major I
-						was primed for a career in abstract thinking and problem solving. It wasn't until building my
-						first website, however, that I knew I had found what I wanted to do. Since then, I've been doing
-						my best to keep up with the ever-evolving JavaScript ecosystem and learning as much as possible
-						along the way.
-					</p>
-					<p className="body">
-						After a period of coast-to-coast exploring, I'm currently settled In Austin, TX with my wife,
-						Kelly and bulldog, Hugo.
-					</p>
+					<p className="title">{data.title}</p>
+					<p className="body">{data.intro}</p>
+					<p className="body">{data.conclusion}</p>
 				</div>
 				<div className="about-image-container">
-					<img
-						src="https://AZARPHOTOGRAPHY.zenfolio.com/img/s/v-10/p3707040263-2.jpg"
-						width="267"
-						height="400"
-						alt="AZAR PHOTOGRAPHY: KELLY &amp; BRITT &emdash; "
-					/>
+					<img src={data.image} alt="My wife and I at our wedding" />
 				</div>
 			</div>
 		</Layout>
@@ -36,3 +22,22 @@ const About = () => {
 };
 
 export default About;
+
+export const query = graphql`
+	query {
+		allFile(filter: { sourceInstanceName: { eq: "content" }, name: { eq: "about" } }) {
+			edges {
+				node {
+					childMarkdownRemark {
+						frontmatter {
+							title
+							intro
+							conclusion
+							image
+						}
+					}
+				}
+			}
+		}
+	}
+`;

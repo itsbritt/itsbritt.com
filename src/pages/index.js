@@ -3,6 +3,7 @@ import * as React from 'react';
 
 // Gatsby
 import { Router } from '@reach/router';
+import { graphql } from 'gatsby';
 
 // Components
 import Home from '../components/Home/Home';
@@ -16,10 +17,11 @@ import NotFoundPage from './404';
 // Styles
 import '../styles/styles.scss';
 
-const IndexPage = () => {
+const IndexPage = props => {
+	const data = props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
 	return (
 		<Router>
-			<Home path="/" />
+			<Home path="/" data={data} />
 			<About path="/about" />
 			<Resume path="/resume" />
 			<Blog path="/blog" />
@@ -29,3 +31,20 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const query = graphql`
+	query {
+		allFile(filter: { sourceInstanceName: { eq: "content" }, name: { eq: "home" } }) {
+			edges {
+				node {
+					childMarkdownRemark {
+						frontmatter {
+							title
+							intro
+						}
+					}
+				}
+			}
+		}
+	}
+`;

@@ -1,6 +1,9 @@
 // React
 import React from 'react';
 
+// Particles
+import Particles from 'react-particles-js';
+
 // Components
 import Layout from '../Layout/Layout';
 import SocialMediaLinks from '../SocialMediaList/SocialMediaList';
@@ -8,15 +11,37 @@ import SocialMediaLinks from '../SocialMediaList/SocialMediaList';
 // Styles
 import './Home.scss';
 
-const Home = () => {
+const Home = ({ data }) => {
 	return (
-		<Layout>
-			<div className="intro">
-				<h1>Britt Shroyer</h1>
-				<h3>UI Engineer</h3>
-				<SocialMediaLinks />
-			</div>
-		</Layout>
+		<>
+			<Particles
+				params={{
+					particles: {
+						number: {
+							value: 50
+						},
+						size: {
+							value: 3
+						}
+					},
+					interactivity: {
+						events: {
+							onhover: {
+								enable: true,
+								mode: 'repulse'
+							}
+						}
+					}
+				}}
+			/>
+			<Layout>
+				<div className="intro">
+					<h1>{data.title}</h1>
+					<h3>{data.intro}</h3>
+					<SocialMediaLinks />
+				</div>
+			</Layout>
+		</>
 	);
 };
 

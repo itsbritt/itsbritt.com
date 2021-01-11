@@ -1,9 +1,6 @@
 // React
 import React, { useEffect, useState } from 'react';
 
-// Particles
-import Particles from 'react-particles-js';
-
 // Lodash
 import { throttle } from 'lodash';
 
@@ -34,25 +31,6 @@ export default function Layout({ children }) {
 
 	return (
 		<main className="main">
-			<Particles
-				params={{
-					"particles": {
-						"number": {
-							"value": 50
-						},
-						"size": {
-							"value": 3
-						}
-					},
-					"interactivity": {
-						"events": {
-							"onhover": {
-								"enable": true,
-								"mode": "repulse"
-							}
-						}
-					}
-				}} />
 			<Header isDesktopView={isDesktopView} />
 			{children}
 			<Footer isDesktopView={isDesktopView} />

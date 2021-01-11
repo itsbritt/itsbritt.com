@@ -1,16 +1,25 @@
 backend:
-    name: test-repo
+    name: github
+    repo: itsbritt/itsbritt.com
 
 media_folder: static/assets
 public_folder: /assets
 
 collections:
-    - name: blog
-      label: Blog
-      folder: src/pages/blog
-      create: true
-      fields:
-          - { name: path, label: Path }
-          - { name: date, label: Date, widget: datetime }
-          - { name: title, label: Title }
-          - { name: body, label: Body, widget: markdown }
+    - label: 'Pages'
+      name: 'pages'
+      files:
+          - label: 'Home Page'
+            name: 'home'
+            file: 'content/home.md'
+            fields:
+                - { label: Title, name: title, widget: string }
+                - { label: Intro text, name: intro, widget: text }
+          - label: 'About Page'
+            name: 'about'
+            file: 'content/about.md'
+            fields:
+                - { label: Title, name: title, widget: string }
+                - { label: Intro text, name: intro, widget: text }
+                - { label: Conclusion text, name: conclusion, widget: text }
+                - { label: Image, name: image, widget: image }
