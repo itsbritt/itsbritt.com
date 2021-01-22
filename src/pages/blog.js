@@ -6,7 +6,7 @@ import Layout from '../components/Layout/Layout';
 
 const Blog = () => {
 	return (
-		<Layout>
+		<Layout bgColor="#282c35">
 			<span>Blog</span>
 		</Layout>
 	);

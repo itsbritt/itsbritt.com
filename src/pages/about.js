@@ -6,7 +6,7 @@ import Layout from '../components/Layout/Layout';
 const About = props => {
 	const data = props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
 	return (
-		<Layout className="flex flex-column">
+		<Layout className="flex flex-column" bgColor="#282c35">
 			<div className="about">
 				<div className="about-blurb">
 					<p className="title">{data.title}</p>

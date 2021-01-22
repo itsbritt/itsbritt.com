@@ -11,7 +11,7 @@ import Header from '../Header/Header';
 // Styles
 import './Layout.scss';
 
-export default function Layout({ children }) {
+export default function Layout({ children, bgColor }) {
 	const minBreakPoint = 765;
 	const isDesktopWidth = () => window.innerWidth > minBreakPoint;
 	const [isDesktopView, setIsDesktopView] = useState(isDesktopWidth);
@@ -30,7 +30,7 @@ export default function Layout({ children }) {
 	}, []);
 
 	return (
-		<main className="main">
+		<main className="main" style={{ backgroundColor: bgColor }}>
 			<Header isDesktopView={isDesktopView} />
 			{children}
 			<Footer isDesktopView={isDesktopView} />

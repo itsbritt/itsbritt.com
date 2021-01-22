@@ -5,6 +5,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
 
+// IBM Plex Sans
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 // Icons
 @import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css');
@@ -18,12 +21,8 @@
 // }
 
 body {
-	font-family: 'Roboto', sans-serif;
-	background: #2477ad url('./images/keyboard.jpg') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	font-family: 'IBM Plex Sans', sans-serif;
+	// color: #ffffffe0;
 }
 
 .zmdi {
@@ -53,7 +52,7 @@ body {
 	flex-direction: column-reverse;
 	align-items: center;
 	text-align: center;
-
+	color: #fdfdfd;
 	.title {
 		font-family: 'Roboto Mono';
 		font-size: 36px;

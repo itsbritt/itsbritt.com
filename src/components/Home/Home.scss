@@ -1,3 +1,20 @@
+.home-layout {
+	// background: #2477ad url('../../styles/images/keyboard.jpg') no-repeat center center fixed;
+	// background: #282c35 url('../../styles/images/keyboard.jpg') no-repeat center center fixed;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	.main {
+		color: #fdfdfd;
+	}
+}
+
 .intro {
 	text-align: center;
 	align-self: center;

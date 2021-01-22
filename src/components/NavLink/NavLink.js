@@ -11,7 +11,7 @@ const NavLink = ({ path, icon, name }) => {
 				return (
 					isCurrent && {
 						style: {
-							textShadow: ' 0 0 4px #fff',
+							// textShadow: ' 0 0 4px #fff',
 							textDecoration: 'underline'
 						}
 					}
