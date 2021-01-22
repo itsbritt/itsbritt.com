@@ -2,9 +2,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 24px;
-	position: sticky;
+	max-width: 700px;
+	width: 85%;
 	font-size: 18px;
+	margin: 28px auto;
 
 	a {
 		color: inherit;
@@ -13,9 +14,5 @@
 		// &:hover {
 		// 	text-shadow: 0 0 7px #fff;
 		// }
-	}
-
-	@media screen and (min-width: 1366px) {
-		padding: 40px 240px;
 	}
 }

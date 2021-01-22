@@ -12,28 +12,28 @@ import Header from '../Header/Header';
 import './Layout.scss';
 
 export default function Layout({ children, bgColor }) {
-	const minBreakPoint = 765;
-	const isDesktopWidth = () => window.innerWidth > minBreakPoint;
-	const [isDesktopView, setIsDesktopView] = useState(isDesktopWidth);
+	// const minBreakPoint = 765;
+	// const isDesktopWidth = () => window.innerWidth > minBreakPoint;
+	// const [isDesktopView, setIsDesktopView] = useState(isDesktopWidth);
 
-	useEffect(() => {
-		let mounted = true;
-		function handleResize() {
-			return setIsDesktopView(isDesktopWidth);
-		}
-		if (mounted) {
-			window.addEventListener('resize', throttle(handleResize, 250));
-		}
-		return function cleanup() {
-			mounted = false;
-		};
-	}, []);
+	// useEffect(() => {
+	// 	let mounted = true;
+	// 	function handleResize() {
+	// 		return setIsDesktopView(isDesktopWidth);
+	// 	}
+	// 	if (mounted) {
+	// 		window.addEventListener('resize', throttle(handleResize, 250));
+	// 	}
+	// 	return function cleanup() {
+	// 		mounted = false;
+	// 	};
+	// }, []);
 
 	return (
 		<main className="main" style={{ backgroundColor: bgColor }}>
-			<Header isDesktopView={isDesktopView} />
+			<Header />
 			{children}
-			<Footer isDesktopView={isDesktopView} />
+			{/* <Footer isDesktopView={isDesktopView} /> */}
 		</main>
 	);
 }

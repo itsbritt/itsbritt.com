@@ -1,23 +1,46 @@
 .resume-container {
 	max-width: 700px;
+	width: 85%;
 	margin: 0 auto;
 }
 
 .job-card {
-	display: flex;
-	flex-direction: column;
-	// padding: 3rem;
-	// background: blue;
-
+	.company-name {
+		font-size: 26px;
+	}
+	a {
+		color: #fff;
+	}
 	.job-card__header {
 		display: flex;
-		flex-direction: column;
+		padding: 12px;
+		justify-content: space-between;
+		align-items: flex-end;
 	}
 
 	.job-card__body {
 		display: flex;
 		flex-direction: column;
-		background: #1f2229;
-		// background: #7c9ac2;
+		background: var(--purpleDark);
+		border-radius: 8px;
+		padding: 12px;
+
+		.title {
+			font-size: 24px;
+		}
+	}
+
+	.job-card__skills {
+		display: flex;
+		flex-direction: row-reverse;
+		margin-bottom: 4px;
+		flex-wrap: wrap;
+		.skill {
+			font-size: 13px;
+			background: #1c2436;
+			padding: 8px;
+			border-radius: 4px;
+			margin: 8px 4px 0 4px;
+		}
 	}
 }

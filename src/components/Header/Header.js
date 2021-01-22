@@ -11,21 +11,15 @@ import siteLogo from '../../images/logo.png';
 import './Header.scss';
 import { Link } from 'gatsby';
 
-const Header = ({ isDesktopView }) => {
+const Header = () => {
 	return (
 		<header className="global-header">
-			{isDesktopView && (
-				<>
-					<Link to="/">
-						<img
-							src={siteLogo}
-							alt="logo"
-							style={{ height: '100%', filter: 'invert(100%)', width: '55px' }}
-						/>
-					</Link>
-					<Navbar />
-				</>
-			)}
+			<>
+				<Link to="/">
+					<img src={siteLogo} alt="logo" style={{ height: '100%', filter: 'invert(100%)', width: '55px' }} />
+				</Link>
+				<Navbar />
+			</>
 		</header>
 	);
 };

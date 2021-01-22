@@ -10,7 +10,7 @@ import './Navbar.scss';
 const Navbar = () => {
 	return (
 		<nav className="nav-desktop">
-			<NavLink path="/about" name="about" />
+			{/* <NavLink path="/about" name="about" /> */}
 			<NavLink path="/resume" name="resume" />
 			<NavLink path="/blog" name="blog" />
 		</nav>

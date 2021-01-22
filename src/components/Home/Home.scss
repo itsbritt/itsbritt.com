@@ -12,32 +12,35 @@
 	background-size: cover;
 	.main {
 		color: #fdfdfd;
+		display: flex;
+		flex-direction: column;
 	}
 }
 
 .intro {
 	text-align: center;
 	align-self: center;
-	margin-top: -54px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	min-height: 175px;
 	align-items: center;
+	margin: auto;
 
 	h1 {
 		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 36px;
-		margin-bottom: 8px;
-		margin: 0;
+		margin-top: 0;
+		margin-bottom: 12px;
 	}
 
 	h3 {
 		font-style: italic;
 		font-weight: normal;
 		font-size: 24px;
-		margin: 0;
+		margin-top: 0;
+		margin-bottom: 12px;
 	}
 
 	.social-media-links {
@@ -57,5 +60,9 @@
 				font-size: 24px;
 			}
 		}
+	}
+
+	.hero-svg {
+		fill: none;
 	}
 }
