@@ -5,24 +5,18 @@ companyUrl: https://deloitte.com
 startDate: 2019-07-23T06:43:05.226Z
 endDate: 2020-04-23T06:43:05.239Z
 role: Front End Developer
-summary: >-
-  
+summary: >
+  ### My Team
 
-  Heloofjeiafjeiafeafjeafijea
+  My team of developers......fejiafiejalfjeilafjelaifjeafjeafeafea
 
+  #
 
-  <p>fjeiafjeilafjelajfeliajfelajfea</p>
+  Next we did thisfejialfjeilafhielajfilejaifleailfheilahgileageoafethisfejialfjeilafhielajfilejaifleailfheilahgileageoafethisfejialfjeilafhielajfilejaifleailfheilahgileageoafethisfejialfjeilafhielajfilejaifleailfheilahgileageoafethisfejialfjeilafhielajfilejaifleailfheilahgileageoafethisfejialfjeilafhielajfilejaifleailfheilahgileageoafe
 
-  __________________________________
+  ##
 
-
-  lorem ipsumIpsum commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum. Est Lorem sunt pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.lorem ipsumIpsumcommodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum. Est Lorem sunt
-
-
-  _____________________________________________
-
-
-  pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum. Est Lorem suntpariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.
+  NExt paragraht herere
 skills:
   - react
   - redux
