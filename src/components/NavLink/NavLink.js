@@ -4,14 +4,16 @@ import React from 'react';
 // Gatsby
 import { Link } from 'gatsby';
 
+import './Navlink.scss';
+
 const NavLink = ({ path, icon, name }) => {
 	return (
 		<Link
+			className="underline"
 			getProps={({ isCurrent }) => {
 				return (
 					isCurrent && {
 						style: {
-							// textShadow: ' 0 0 4px #fff',
 							textDecoration: 'underline'
 						}
 					}

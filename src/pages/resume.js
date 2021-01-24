@@ -1,3 +1,6 @@
+// GraphQL
+import { graphql } from 'gatsby';
+
 // React
 import React from 'react';
 
@@ -5,71 +8,72 @@ import React from 'react';
 import Layout from '../components/Layout/Layout';
 
 import '../styles/resume.scss';
-import { Link } from 'gatsby';
-import { useState } from 'react';
-
-const skills = ['javascript', 'react', 'react-redux', 'cssfefesfsefes', 'another-long-one'];
 
 const Skill = ({ skill }) => {
 	return <div className="skill">{skill}</div>;
 };
 
-const Card = ({}) => {
-	// window
-	// const [expanded, setExpanded] = useState(true);
+const Card = ({ data }) => {
+	data = data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
 	return (
 		<div className="job-card">
 			<div className="job-card__header">
-				<div className="flex-column">
-					<div className="company-name">Deloitte</div>
+				<div>
+					<div className="company-name">{data.companyName}</div>
 					<small>
-						<a href="https://deloitte.com" target="_blank">
-							https://deloitte.com
+						<a href={data.companyUrl} target="_blank" rel="noreferrer">
+							{data.companyUrl}
 						</a>
 					</small>
 				</div>
-				<small className="dates">June 2019 - April 2020</small>
+				<small className="dates">
+					{data.startDate} - {data.endDate || 'Present'}
+				</small>
 			</div>
 			<div className="job-card__body">
-				<span className="title">Title</span>
-				<p>
-					lorem ipsumIpsum commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum.
-					Est Lorem sunt pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.
-				</p>
-				<p>
-					lorem ipsumIpsum commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum.
-					Est Lorem sunt pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.
-				</p>
-				<p>
-					lorem ipsumIpsum commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum.
-					Est Lorem sunt pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.lorem ipsumIpsum
-					commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum. Est Lorem sunt
-					pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.
-				</p>
-				<p>
-					lorem ipsumIpsum commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum.
-					Est Lorem sunt pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.lorem ipsumIpsum
-					commodo adipisicing id et dolor tempor mollit enim do consequat Lorem dolor cillum. Est Lorem sunt
-					pariatur consectetur culpa ad. Incididunt qui laborum magna Lorem ea.
-				</p>
-				<p className="job-card__skills">
-					{skills.map((skill, i) => (
+				<span className="title">{data.role}</span>
+				<div dangerouslySetInnerHTML={{ __html: data.summary }}></div>
+				<div className="job-card__skills">
+					{data.skills.map((skill, i) => (
 						<Skill key={i} skill={skill} />
 					))}
-				</p>
+				</div>
 			</div>
 		</div>
 	);
 };
 
-const Resume = () => {
+const Resume = ({ data }) => {
 	return (
 		<Layout bgColor="#586DA3">
 			<div className="resume-container">
-				<Card />
+				<Card data={data} />
 			</div>
 		</Layout>
 	);
 };
 
 export default Resume;
+
+export const query = graphql`
+	query MyQuery {
+		allFile(sort: { fields: childMarkdownRemark___frontmatter___startDate, order: DESC }) {
+			edges {
+				node {
+					childMarkdownRemark {
+						html
+						frontmatter {
+							companyName
+							companyUrl
+							startDate(formatString: "MMMM YYYY")
+							endDate(formatString: "MMMM YYYY")
+							role
+							summary
+							skills
+						}
+					}
+				}
+			}
+		}
+	}
+`;

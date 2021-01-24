@@ -9,7 +9,6 @@ import { graphql } from 'gatsby';
 import Home from '../components/Home/Home';
 
 // Pages
-import About from './about';
 import Resume from './resume';
 import Blog from './blog';
 import NotFoundPage from './404';
@@ -19,10 +18,10 @@ import '../styles/styles.scss';
 
 const IndexPage = props => {
 	const data = props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
+	console.log('data', data);
 	return (
 		<Router>
 			<Home path="/" data={data} />
-			<About path="/about" />
 			<Resume path="/resume" />
 			<Blog path="/blog" />
 			<NotFoundPage default />
