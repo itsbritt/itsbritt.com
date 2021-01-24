@@ -2,7 +2,7 @@
 companyName: SailPoint
 companyUrl: https://sailpoint.com
 startDate: 2020-04-24T17:48:28.145Z
-endDate: 2021-01-24T18:48:28.152Z
+endDate: ""
 role: UI Engineer
 summary: >-
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
