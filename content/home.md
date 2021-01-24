@@ -1,4 +1,4 @@
 ---
 title: Britt Shroyer
-intro: UI Engineers
+intro: UI Engineer
 ---
