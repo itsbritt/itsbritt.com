@@ -1,5 +1,5 @@
 ---
-companyName: Deloittes
+companyName: Deloitte
 companyUrl: https://deloitte.com
 startDate: 2019-07-24T16:08:26.408Z
 endDate: 2020-04-24T16:08:26.417Z
