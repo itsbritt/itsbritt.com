@@ -1,4 +1,4 @@
 ---
-title: Britt Shroyer
+title: Britt Shroyers
 intro: UI Engineer
 ---
