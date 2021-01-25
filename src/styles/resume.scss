@@ -1,47 +1,140 @@
 .resume-container {
 	max-width: 700px;
-	width: 85%;
+	width: 90%;
 	margin: 0 auto;
+	position: relative;
+
+	// &::before {
+	// 	@media screen and (min-width: 1025px) {
+	// 		left: calc(100% - 740px);
+	// 		content: '';
+	// 		position: absolute;
+	// 		z-index: -1;
+	// 		top: 42px;
+	// 		bottom: 0;
+	// 		width: 3px;
+	// 		background-color: darken(#586da3, 8%);
+	// 	}
+	// }
 }
 
 .job-card {
-	margin: 48px 0;
+	margin-top: 60px;
+
+	@media screen and (min-width: 1025px) {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 9px;
+			height: 9px;
+			border: 3px solid darken(#586da3, 8%);
+			transform: translateY(29px);
+			left: calc(100% - 746px);
+			background: darken(#586da3, 8%);
+
+			&:first {
+				background: none;
+			}
+		}
+
+		&::after {
+			left: calc(100% - 740px);
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: 42px;
+			bottom: 0;
+			width: 3px;
+			background-color: darken(#586da3, 8%);
+		}
+		// left: calc(100% - 740px);
+		// content: '';
+		// position: absolute;
+		// z-index: -1;
+		// top: 42px;
+		// bottom: 0;
+		// width: 3px;
+		// background-color: darken(#586da3, 8%);
+	}
+
+	// &::before {
+	// 	@media screen and (min-width: 1025px) {
+	// 		content: '';
+	// 		position: absolute;
+	// 		width: 9px;
+	// 		height: 9px;
+	// 		border: 3px solid darken(#586da3, 8%);
+	// 		transform: translateY(29px);
+	// 		left: calc(100% - 746px);
+	// 		background: darken(#586da3, 8%);
+
+	// 		&:first {
+	// 			background: none;
+	// 		}
+	// 	}
+	// }
+
+	&:first-child {
+		margin: 32px 0;
+	}
 	.company-name {
-		font-size: 26px;
+		font-size: 36px;
+		font-weight: 700;
 	}
 	a {
-		color: #fff;
+		color: rgba(255, 255, 255, 0.85);
+
+		// color: #fff;
 	}
 	.job-card__header {
 		display: flex;
 		padding: 12px;
 		justify-content: space-between;
 		align-items: flex-end;
+		position: relative;
 	}
 
 	.job-card__body {
 		display: flex;
 		flex-direction: column;
 		background: var(--purpleDark);
-		border-radius: 8px;
+		border-radius: 6px;
 		padding: 12px;
+		position: relative;
 
 		.title {
 			font-size: 24px;
+			font-style: italic;
+			position: absolute;
+			border-radius: 6px 6px 0px 0px;
+			top: 0;
+			left: 0;
+			background: #0e1627;
+			width: 100%;
+			margin-bottom: 8px;
+			padding: 18px 12px;
+			box-sizing: border-box;
+		}
+
+		.body-summary {
+			margin-top: 56px;
 		}
 	}
 
 	.job-card__skills {
 		display: flex;
-		flex-direction: row-reverse;
-		margin-bottom: 4px;
+		margin-bottom: 12px;
 		flex-wrap: wrap;
+
 		.skill {
 			font-size: 13px;
-			background: #1c2436;
+			background: #0e1627;
 			padding: 8px;
-			border-radius: 4px;
-			margin: 8px 4px 0 4px;
+			border-radius: 3px;
+			margin: 4px;
+			&:first-of-type {
+				margin-left: 0px;
+			}
 		}
 	}
 }

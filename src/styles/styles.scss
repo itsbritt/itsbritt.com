@@ -1,46 +1,33 @@
-// Montserrat Regular
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-// Montserrat Bold
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
-
 // IBM Plex Sans
+
+// Regular
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+// Bold
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap');
+
+// Roboto
+
+// Medium Italic
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap');
+// Regular
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap');
+
 // Icons
 @import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css');
-
-// html {
-// 	// background: url('./images/keyboard.jpg') no-repeat center center fixed;
-// 	// -webkit-background-size: cover;
-// 	// -moz-background-size: cover;
-// 	// -o-background-size: cover;
-// 	// background-size: cover;
-// }
 
 :root {
 	--blueLight: #2477ad;
 	--purpleLight: #586da3;
 	--purpleDark: #384669;
-	--purpleDarkest: #1c2436;
+	--purpleDarkest: #0e1627;
 	--grayDark: #1f2229;
 }
 
 body {
 	font-family: 'IBM Plex Sans', sans-serif;
-	// color: #ffffffe0;
-}
-
-.zmdi {
-	font-size: 24px;
-}
-
-#tsparticles {
-	position: fixed;
-	width: 100%;
-	height: 100%;
+	// color: rgba(255, 255, 255, 0.85);
+	color: black;
 }
 
 // Pages
@@ -51,37 +38,37 @@ body {
 	}
 }
 
-.about {
-	align-self: center;
-	justify-self: center;
-	box-sizing: border-box;
-	margin: 0 24px 96px 24px;
-	display: flex;
-	flex-direction: column-reverse;
-	align-items: center;
-	text-align: center;
-	color: #fdfdfd;
-	.title {
-		font-family: 'Roboto Mono';
-		font-size: 36px;
-	}
+// .about {
+// 	align-self: center;
+// 	justify-self: center;
+// 	box-sizing: border-box;
+// 	margin: 0 24px 96px 24px;
+// 	display: flex;
+// 	flex-direction: column-reverse;
+// 	align-items: center;
+// 	text-align: center;
+// 	color: #fdfdfd;
+// 	.title {
+// 		font-family: 'Roboto Mono';
+// 		font-size: 36px;
+// 	}
 
-	.body {
-		font-size: 22px;
-		line-height: 32px;
-	}
+// 	.body {
+// 		font-size: 22px;
+// 		line-height: 32px;
+// 	}
 
-	@media screen and (min-width: 1366px) {
-		text-align: left;
-		flex-direction: row;
-		justify-content: space-between;
-		margin: 0px 240px 72px 240px;
+// 	@media screen and (min-width: 1366px) {
+// 		text-align: left;
+// 		flex-direction: row;
+// 		justify-content: space-between;
+// 		margin: 0px 240px 72px 240px;
 
-		.about-blurb {
-			margin-right: 12px;
-		}
-		.title {
-			margin-top: 0;
-		}
-	}
-}
+// 		.about-blurb {
+// 			margin-right: 12px;
+// 		}
+// 		.title {
+// 			margin-top: 0;
+// 		}
+// 	}
+// }

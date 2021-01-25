@@ -3,7 +3,7 @@
 	justify-content: space-between;
 	align-items: center;
 	max-width: 700px;
-	width: 85%;
+	width: 90%;
 	font-size: 18px;
 	margin: 28px auto;
 
@@ -11,8 +11,11 @@
 		color: inherit;
 		text-decoration: none;
 
-		// &:hover {
-		// 	text-shadow: 0 0 7px #fff;
-		// }
+		&.home-link {
+			font-family: 'Roboto';
+			font-size: 27px;
+			font-weight: 500;
+			font-style: italic;
+		}
 	}
 }

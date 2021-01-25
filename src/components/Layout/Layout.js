@@ -1,39 +1,18 @@
 // React
-import React, { useEffect, useState } from 'react';
-
-// Lodash
-import { throttle } from 'lodash';
+import React from 'react';
 
 // Components
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
 // Styles
 import './Layout.scss';
 
-export default function Layout({ children, bgColor }) {
-	// const minBreakPoint = 765;
-	// const isDesktopWidth = () => window.innerWidth > minBreakPoint;
-	// const [isDesktopView, setIsDesktopView] = useState(isDesktopWidth);
-
-	// useEffect(() => {
-	// 	let mounted = true;
-	// 	function handleResize() {
-	// 		return setIsDesktopView(isDesktopWidth);
-	// 	}
-	// 	if (mounted) {
-	// 		window.addEventListener('resize', throttle(handleResize, 250));
-	// 	}
-	// 	return function cleanup() {
-	// 		mounted = false;
-	// 	};
-	// }, []);
-
+export default function Layout({ children }) {
 	return (
-		<main className="main" style={{ backgroundColor: bgColor }}>
+		// <main className="main" style={{ backgroundColor: bgColor }}>
+		<main className="main">
 			<Header />
 			{children}
-			{/* <Footer isDesktopView={isDesktopView} /> */}
 		</main>
 	);
 }

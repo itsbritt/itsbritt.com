@@ -13,31 +13,38 @@ const Skill = ({ skill }) => {
 	return <div className="skill">{skill}</div>;
 };
 
-const Card = ({ data }) => {
-	data = data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
+const Card = ({ data, mostRecent }) => {
+	const {
+		companyName,
+		companyUrl,
+		startDate,
+		endDate,
+		role,
+		summary,
+		skills
+	} = data.node.childMarkdownRemark.frontmatter;
+
 	return (
 		<div className="job-card">
 			<div className="job-card__header">
-				<div>
-					<div className="company-name">{data.companyName}</div>
-					<small>
-						<a href={data.companyUrl} target="_blank" rel="noreferrer">
-							{data.companyUrl}
-						</a>
-					</small>
-				</div>
+				<span className="company-name">{companyName}</span>
 				<small className="dates">
-					{data.startDate} - {data.endDate || 'Present'}
+					{startDate} - {mostRecent ? 'Present' : endDate}
 				</small>
 			</div>
 			<div className="job-card__body">
-				<span className="title">{data.role}</span>
-				<div dangerouslySetInnerHTML={{ __html: data.summary }}></div>
+				<span className="title">{role}</span>
+				<div dangerouslySetInnerHTML={{ __html: summary }} className="body-summary"></div>
 				<div className="job-card__skills">
-					{data.skills.map((skill, i) => (
+					{skills.map((skill, i) => (
 						<Skill key={i} skill={skill} />
 					))}
 				</div>
+				<small>
+					<a href={companyUrl} target="_blank" rel="noreferrer">
+						{companyUrl}
+					</a>
+				</small>
 			</div>
 		</div>
 	);
@@ -45,9 +52,12 @@ const Card = ({ data }) => {
 
 const Resume = ({ data }) => {
 	return (
-		<Layout bgColor="#586DA3">
+		// <Layout bgColor="#586DA3">
+		<Layout>
 			<div className="resume-container">
-				<Card data={data} />
+				{data.allFile.edges.map((edge, i) => (
+					<Card data={edge} key={i} mostRecent={i === 0} />
+				))}
 			</div>
 		</Layout>
 	);
@@ -56,8 +66,11 @@ const Resume = ({ data }) => {
 export default Resume;
 
 export const query = graphql`
-	query MyQuery {
-		allFile(sort: { fields: childMarkdownRemark___frontmatter___startDate, order: DESC }) {
+	query Jobs {
+		allFile(
+			filter: { sourceInstanceName: { eq: "content" }, dir: { regex: "/content/jobs/" } }
+			sort: { fields: childMarkdownRemark___frontmatter___startDate, order: DESC }
+		) {
 			edges {
 				node {
 					childMarkdownRemark {
@@ -65,11 +78,14 @@ export const query = graphql`
 						frontmatter {
 							companyName
 							companyUrl
-							startDate(formatString: "MMMM YYYY")
-							endDate(formatString: "MMMM YYYY")
+							endDate(formatString: "MMM YYYY")
+							header
+							intro
 							role
-							summary
 							skills
+							startDate(formatString: "MMM YYYY")
+							summary
+							title
 						}
 					}
 				}
