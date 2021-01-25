@@ -6,9 +6,10 @@ import Layout from '../components/Layout/Layout';
 
 const Blog = () => {
 	return (
-		// <Layout bgColor="#282c35">
 		<Layout bgColor="#fff">
-			<span>Blog</span>
+			<div className="page-body-container">
+				<p className="page-header">Blog</p>
+			</div>
 		</Layout>
 	);
 };

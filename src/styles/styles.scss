@@ -26,8 +26,20 @@
 
 body {
 	font-family: 'IBM Plex Sans', sans-serif;
-	// color: rgba(255, 255, 255, 0.85);
 	color: black;
+}
+
+.page-body-container {
+	max-width: 700px;
+	width: 88%;
+	margin: 0 auto;
+	position: relative;
+
+	.page-header {
+		font-family: 'Roboto';
+		font-size: 56px;
+		font-weight: 700;
+	}
 }
 
 // Pages
@@ -37,38 +49,3 @@ body {
 		flex-direction: column;
 	}
 }
-
-// .about {
-// 	align-self: center;
-// 	justify-self: center;
-// 	box-sizing: border-box;
-// 	margin: 0 24px 96px 24px;
-// 	display: flex;
-// 	flex-direction: column-reverse;
-// 	align-items: center;
-// 	text-align: center;
-// 	color: #fdfdfd;
-// 	.title {
-// 		font-family: 'Roboto Mono';
-// 		font-size: 36px;
-// 	}
-
-// 	.body {
-// 		font-size: 22px;
-// 		line-height: 32px;
-// 	}
-
-// 	@media screen and (min-width: 1366px) {
-// 		text-align: left;
-// 		flex-direction: row;
-// 		justify-content: space-between;
-// 		margin: 0px 240px 72px 240px;
-
-// 		.about-blurb {
-// 			margin-right: 12px;
-// 		}
-// 		.title {
-// 			margin-top: 0;
-// 		}
-// 	}
-// }

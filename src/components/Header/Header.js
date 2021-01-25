@@ -13,12 +13,10 @@ import './Header.scss';
 const Header = () => {
 	return (
 		<header className="global-header">
-			<>
-				<Link to="/" className="home-link">
-					Br;tt
-				</Link>
-				<Navbar />
-			</>
+			<Link to="/" className="home-link">
+				Br;tt
+			</Link>
+			<Navbar />
 		</header>
 	);
 };

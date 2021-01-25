@@ -27,7 +27,7 @@ const Card = ({ data, mostRecent }) => {
 	return (
 		<div className="job-card">
 			<div className="job-card__header">
-				<span className="company-name">{companyName}</span>
+				<div className="company-name">{companyName}</div>
 				<small className="dates">
 					{startDate} - {mostRecent ? 'Present' : endDate}
 				</small>
@@ -52,9 +52,9 @@ const Card = ({ data, mostRecent }) => {
 
 const Resume = ({ data }) => {
 	return (
-		// <Layout bgColor="#586DA3">
 		<Layout>
-			<div className="resume-container">
+			<div className="page-body-container">
+				<p className="page-header">Resume</p>
 				{data.allFile.edges.map((edge, i) => (
 					<Card data={edge} key={i} mostRecent={i === 0} />
 				))}
@@ -79,7 +79,6 @@ export const query = graphql`
 							companyName
 							companyUrl
 							endDate(formatString: "MMM YYYY")
-							header
 							intro
 							role
 							skills

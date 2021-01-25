@@ -1,14 +1,13 @@
 .global-header {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	flex-direction: column;
 	max-width: 700px;
-	width: 90%;
+	width: 88%;
 	font-size: 18px;
 	margin: 28px auto;
 
 	a {
-		color: inherit;
+		color: lighten(#000, 50%);
 		text-decoration: none;
 
 		&.home-link {
@@ -16,6 +15,8 @@
 			font-size: 27px;
 			font-weight: 500;
 			font-style: italic;
+			color: inherit;
+			margin-bottom: 16px;
 		}
 	}
 }

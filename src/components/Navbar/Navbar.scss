@@ -1,9 +1,17 @@
 .nav-desktop {
+	font-family: 'Roboto';
+	border-bottom: 1px solid lighten(#000, 50%);
+	padding-bottom: 12px;
 	display: flex;
 	justify-content: space-between;
-	font-family: 'Roboto';
 
 	a {
-		margin-left: 12px;
+		margin-right: 12px;
+		&:hover {
+			color: #000;
+		}
+		&:last-of-type {
+			margin-right: 0;
+		}
 	}
 }
