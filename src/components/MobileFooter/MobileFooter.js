@@ -12,7 +12,7 @@ const MobileFooter = () => {
 		{ name: 'home', path: '/', icon: 'home' },
 		{ name: 'about', path: '/about', icon: 'face' },
 		{ name: 'resume', path: '/resume', icon: 'folder' },
-		{ name: 'blog', path: '/blog', icon: 'laptop' }
+		{ name: 'blog', path: '/posts', icon: 'laptop' }
 	];
 	const footerIcons = clientLinks.map(({ name, path, icon }, i) => (
 		<NavLink name={name} path={path} icon={icon} key={i} />

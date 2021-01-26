@@ -35,11 +35,17 @@ collections:
           - { label: Skills, name: skills, widget: list }
     - label: 'Blog Post'
       name: 'blog'
-      folder: 'content/posts'
+      folder: 'content/blog'
       create: true # Allow users to create new documents in this collection
-      slug: '{{ slug }}' # Filename template, e.g., YYYY-MM-DD-title.md
+      slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
+      identifier_field: title
       fields: # The fields for each document, usually in front matter
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Publish Date', name: 'date', widget: 'datetime', date_format: 'MM-DD-YY' }
           - { label: 'Featured Image', name: 'thumbnail', widget: 'image', required: false }
           - { label: 'Body', name: 'body', widget: 'markdown' }
+
+slug:
+    encoding: 'ascii'
+    clean_accents: true
+    sanitize_replacement: '_'

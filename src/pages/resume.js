@@ -74,7 +74,6 @@ export const query = graphql`
 			edges {
 				node {
 					childMarkdownRemark {
-						html
 						frontmatter {
 							companyName
 							companyUrl

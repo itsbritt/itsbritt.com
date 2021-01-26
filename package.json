@@ -19,6 +19,7 @@
     "gatsby": "^2.26.1",
     "gatsby-plugin-netlify-cms": "^4.7.0",
     "gatsby-plugin-sass": "^2.8.0",
+    "gatsby-plugin-slug": "^1.1.1",
     "gatsby-source-filesystem": "^2.9.0",
     "gatsby-transformer-remark": "^2.14.0",
     "lodash": "^4.17.20",
