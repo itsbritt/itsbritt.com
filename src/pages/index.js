@@ -26,7 +26,6 @@ const IndexPage = props => {
 				<NotFoundPage default />
 				<Resume path="resume" />
 				<Blog path="blog" />
-				<Post path="posts/:postSlug" />
 			</Home>
 		</Router>
 	);

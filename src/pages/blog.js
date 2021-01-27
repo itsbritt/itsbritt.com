@@ -1,4 +1,6 @@
+// Gatsby
 import { Link } from 'gatsby';
+
 // React
 import React from 'react';
 
@@ -9,15 +11,10 @@ const PostSummary = ({ postDetails }) => {
 	const { title, date } = postDetails.node.childMarkdownRemark.frontmatter;
 	const { slug } = postDetails.node.childMarkdownRemark.fields;
 
-	console.log();
-
 	return (
-		<div className="post-summary">
+		<div className="post-summary" style={{ marginBottom: '48px' }}>
 			<Link to={slug}>{title}</Link>
 			<p>{date}</p>
-			{/* <div className="post-tags">
-
-			</div> */}
 		</div>
 	);
 };
@@ -27,11 +24,9 @@ const Blog = ({ data }) => {
 		<Layout>
 			<div className="page-body-container">
 				<p className="page-header">Blog</p>
-				<p>
-					{data.allFile.edges.map((edge, i) => (
-						<PostSummary postDetails={edge} key={i} />
-					))}
-				</p>
+				{data.allFile.edges.map((edge, i) => (
+					<PostSummary postDetails={edge} key={i} />
+				))}
 			</div>
 		</Layout>
 	);
@@ -53,7 +48,7 @@ export const query = graphql`
 						}
 						frontmatter {
 							title
-							date(formatString: "MMM.DD.YYYY")
+							date(formatString: "MM.DD.YYYY")
 						}
 					}
 				}

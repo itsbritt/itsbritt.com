@@ -49,3 +49,20 @@ body {
 		flex-direction: column;
 	}
 }
+
+// Blog Page
+
+.post-summary {
+	a {
+		font-size: 26px;
+		color: black;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	p {
+		color: #2d3748;
+	}
+}
