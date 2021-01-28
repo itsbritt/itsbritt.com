@@ -7,9 +7,6 @@ import { Link } from 'gatsby';
 // Components
 import Navbar from '../Navbar/Navbar';
 
-// Styles
-import './Header.scss';
-
 const Header = () => {
 	return (
 		<header className="global-header">

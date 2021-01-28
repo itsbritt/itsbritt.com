@@ -12,9 +12,9 @@ const PostSummary = ({ postDetails }) => {
 	const { slug } = postDetails.node.childMarkdownRemark.fields;
 
 	return (
-		<div className="post-summary" style={{ marginBottom: '48px' }}>
+		<div className="post-summary" style={{ marginBottom: '3rem' }}>
 			<Link to={slug}>{title}</Link>
-			<p>{date}</p>
+			<span className="post-date">{date}</span>
 		</div>
 	);
 };
@@ -48,7 +48,7 @@ export const query = graphql`
 						}
 						frontmatter {
 							title
-							date(formatString: "MM.DD.YYYY")
+							date(formatString: "MM.DD.YY")
 						}
 					}
 				}

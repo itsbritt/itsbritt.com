@@ -1,0 +1,26 @@
+// Font sizes
+$font-size-sm: 1rem; // 16
+$font-size-base: 1.125rem; // 18
+
+// Headings
+$h1-font-size: ($font-size-base * 3.5); // 56
+$h2-font-size: ($font-size-base * 2.875); // 46
+$h3-font-size: ($font-size-base * 2.125); // 34
+$h4-font-size: ($font-size-base * 1.75); // 28
+$h5-font-size: ($font-size-base * 1.5); // 24
+$h6-font-size: ($font-size-base * 1.125); // 18
+
+// Font weights
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// Colors
+$color-black: black;
+$color-dark-gray: #2b2d2f;
+$color-gray: rgb(45, 55, 72);
+$color-light-gray: rgb(95, 108, 128);
+$color-off-white: rgba(255, 255, 255, 0.85);
+
+// Line heights
+$line-height-base: 1.5;
+$headings-line-height: 1.5;

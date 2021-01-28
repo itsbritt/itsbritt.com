@@ -1,0 +1,25 @@
+@import '../styles/variables.scss';
+
+.post-summary {
+	a {
+		font-size: 1.875rem;
+		color: $color-gray;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.post-date {
+	display: block;
+	color: $color-light-gray;
+	margin-top: 0.5rem;
+	font-size: 1.125rem;
+	font-weight: normal;
+}
+
+.post-body {
+	color: $color-gray;
+}

@@ -4,9 +4,6 @@ import React from 'react';
 // Components
 import NavLink from '../NavLink/NavLink';
 
-// Styles
-import './Navbar.scss';
-
 const Navbar = () => {
 	return (
 		<nav className="nav-desktop">

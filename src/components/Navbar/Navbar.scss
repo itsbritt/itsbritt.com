@@ -1,15 +1,19 @@
+@import '../../styles/variables.scss';
+
 .nav-desktop {
 	font-family: 'Roboto';
-	border-bottom: 1px solid lighten(#000, 50%);
-	padding-bottom: 12px;
+	border-bottom: 1px solid $color-gray;
+	padding-bottom: 0.75rem;
 	display: flex;
 	justify-content: space-between;
 
 	a {
-		margin-right: 12px;
+		margin-right: 0.75rem;
+
 		&:hover {
-			color: #000;
+			color: $color-black;
 		}
+
 		&:last-of-type {
 			margin-right: 0;
 		}

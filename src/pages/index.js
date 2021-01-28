@@ -7,7 +7,6 @@ import { graphql } from 'gatsby';
 
 // Components
 import Home from '../components/Home/Home';
-import Post from '../components/Post/Post';
 
 // Pages
 import Resume from './resume';
@@ -19,7 +18,6 @@ import '../styles/styles.scss';
 
 const IndexPage = props => {
 	const data = props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
-	// console.log('data', data);
 	return (
 		<Router>
 			<Home path="/" data={data}>

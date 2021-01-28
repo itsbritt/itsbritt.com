@@ -1,22 +1,24 @@
+@import '../../styles/variables.scss';
+
 .global-header {
 	display: flex;
 	flex-direction: column;
 	max-width: 700px;
 	width: 88%;
-	font-size: 18px;
-	margin: 28px auto;
+	font-size: 1.25rem;
+	margin: 1.75rem auto;
 
 	a {
-		color: lighten(#000, 50%);
+		color: gray;
 		text-decoration: none;
 
 		&.home-link {
 			font-family: 'Roboto';
-			font-size: 27px;
+			font-size: 1.875rem;
 			font-weight: 500;
 			font-style: italic;
 			color: inherit;
-			margin-bottom: 16px;
+			margin-bottom: 1rem;
 		}
 	}
 }

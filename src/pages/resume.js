@@ -7,7 +7,7 @@ import React from 'react';
 // Components
 import Layout from '../components/Layout/Layout';
 
-import '../styles/resume.scss';
+import '../styles/pages/resume.scss';
 
 const Skill = ({ skill }) => {
 	return <div className="skill">{skill}</div>;
