@@ -31,6 +31,11 @@
 // Resume
 @import './pages/resume.scss';
 
+::selection {
+	background: $color-dark-gray;
+	color: $color-off-white;
+}
+
 html {
 	font-size: 13px;
 	@media screen and (min-width: 1024px) {
