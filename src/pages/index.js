@@ -10,7 +10,7 @@ import Home from '../components/Home/Home';
 
 // Pages
 import Resume from './resume';
-import Blog from './blog';
+import DigitalGarden from './digital_garden';
 import NotFoundPage from './404';
 
 // Styles
@@ -23,7 +23,7 @@ const IndexPage = props => {
 			<Home path="/" data={data}>
 				<NotFoundPage default />
 				<Resume path="resume" />
-				<Blog path="blog" />
+				<DigitalGarden path="digital_garden" />
 			</Home>
 		</Router>
 	);

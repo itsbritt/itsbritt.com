@@ -9,8 +9,8 @@ exports.createPages = async ({ graphql, actions }) => {
 	const result = await graphql(`
 		query Posts {
 			allFile(
-				filter: { sourceInstanceName: { eq: "content" }, dir: { regex: "/content/blog/" } }
-				sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
+				filter: { sourceInstanceName: { eq: "content" }, dir: { regex: "/content/digital_garden/" } }
+				sort: { fields: childMarkdownRemark___frontmatter___dateTended, order: DESC }
 			) {
 				edges {
 					node {

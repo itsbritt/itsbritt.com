@@ -9,7 +9,7 @@ const Navbar = () => {
 		<nav className="nav-desktop">
 			<div>
 				<NavLink path="/resume" name="resume" />
-				<NavLink path="/blog" name="blog" />
+				<NavLink path="/digital_garden" name="digital garden" />
 			</div>
 			<div>
 				<a href="https://github.com/itsbritt" target="_blank" rel="noreferrer" alt="Github icon">

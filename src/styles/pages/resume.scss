@@ -4,7 +4,7 @@
 	margin-bottom: 3.75rem;
 	color: $color-dark-gray;
 
-	@media screen and (min-width: 1025px) {
+	@media screen and (min-width: 1024px) {
 		&::before {
 			content: '';
 			position: absolute;
@@ -12,7 +12,7 @@
 			height: 9px;
 			border: 3px solid $color-gray;
 			transform: translateY(29px);
-			left: calc(100% - 746px);
+			left: calc(100% - 846px);
 			background: $color-gray;
 
 			&:first {
@@ -21,7 +21,7 @@
 		}
 
 		&::after {
-			left: calc(100% - 740px);
+			left: calc(100% - 840px);
 			content: '';
 			position: absolute;
 			z-index: -1;
@@ -82,6 +82,11 @@
 
 			&:first-of-type {
 				margin-left: 0px;
+			}
+
+			&::selection {
+				background: $color-off-white;
+				color: $color-dark-gray;
 			}
 		}
 	}
