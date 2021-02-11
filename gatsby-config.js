@@ -31,6 +31,7 @@ module.exports = {
 		},
 		`gatsby-plugin-slug`,
 		`gatsby-plugin-sass`,
-		`gatsby-plugin-netlify-cms`
+		`gatsby-plugin-netlify-cms`,
+		`gatsby-plugin-mdx`,
 	]
 };

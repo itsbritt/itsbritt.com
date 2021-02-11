@@ -1,5 +1,6 @@
 // Gatsby
 import { Link } from 'gatsby';
+import {FaLeaf, FaSeedling, FaTree} from 'react-icons/fa';
 
 // React
 import React from 'react';
@@ -10,13 +11,21 @@ import Layout from '../components/Layout/Layout';
 const PostSummary = ({ postDetails }) => {
 	const { title, growthState, dateTended } = postDetails.node.childMarkdownRemark.frontmatter;
 	const { slug } = postDetails.node.childMarkdownRemark.fields;
-
+	const icons = {
+		'seedling': <FaSeedling />,
+		'budding': <FaLeaf />,
+		'evergreen': <FaTree />
+	};
 	return (
 		<div className="post-summary" style={{ marginBottom: '3rem' }}>
 			<Link to={slug}>{title}</Link>
-			<br />
-			<span>{growthState}</span>
+			<span><i className="fas fa-seedling"></i></span>
 			<span className="post-date">{dateTended}</span>
+			<div>
+				{
+					icons[growthState]
+				}
+			</div>
 		</div>
 	);
 };
