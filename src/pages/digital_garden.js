@@ -8,9 +8,10 @@ import React, { useReducer } from 'react';
 // Components
 import Layout from '../components/Layout/Layout';
 
-const PostSummary = ({ postdetails }) => {
-	const { title, growthstate, datetended } = postdetails.node.childmarkdownremark.frontmatter;
-	const { slug } = postdetails.node.childmarkdownremark.fields;
+const PostSummary = ({ postDetails }) => {
+	console.log('postDetails', postDetails);
+	const { title, growthState, dateTended } = postDetails.node.childMarkdownRemark.frontmatter;
+	const { slug } = postDetails.node.childMarkdownRemark.fields;
 	const icons = {
 		'seedling': <FaSeedling />,
 		'budding': <FaLeaf />,
@@ -18,12 +19,12 @@ const PostSummary = ({ postdetails }) => {
 	};
 	return (
 		<div className="post-summary" style={{ marginBottom: '3rem' }}>
-			<link to={slug}>{title}</link>
+			<Link to={slug}>{title}</Link>
 			<div style={{display: 'flex', alignItems: 'center', marginTop: '0.5rem'}}>
-				<span>{datetended}</span>
+				<span>{dateTended}</span>
 				<div style={{marginLeft: '1rem'}}>
 					{
-						icons[growthstate]
+						icons[growthState]
 					}
 				</div>
 			</div>
@@ -48,7 +49,7 @@ const DigitalGarden = ({ data }) => {
 	return (
 		<Layout>
 			<div className="page-body-container">
-				<p className="page-header">digital garden</p>
+				<p className="page-header">Digital Garden</p>
 				<p style={{ marginBottom: '3rem' }}>
 					labore magna mollit voluptate id incididunt ut consequat amet enim consectetur sunt. fugiat minim
 					laboris mollit adipisicing id mollit deserunt id qui eu sunt id culpa exercitation. occaecat officia
@@ -58,13 +59,13 @@ const DigitalGarden = ({ data }) => {
 					<ul className="post-filters__topic">tags here</ul>
 					<ul className="post-filters__state">
 						<li>
-							<button onclick={() => dispatch({type: 'seedling'})}>Seedling</button>
+							<button onClick={() => dispatch({type: 'seedling'})}>Seedling</button>
 						</li>
 						<li>
-							<button onclick={() => dispatch({type: 'budding'})}>Budding</button>
+							<button onClick={() => dispatch({type: 'budding'})}>Budding</button>
 						</li>
 						<li>
-							<button onclick={() => dispatch({type: 'evergreen'})}>Evergreen</button>
+							<button onClick={() => dispatch({type: 'evergreen'})}>Evergreen</button>
 						</li>
 					</ul>
 				</div>
@@ -74,12 +75,12 @@ const DigitalGarden = ({ data }) => {
 							icons[selectedstate]
 						</li>)}
 					</ul>
-				</div>
-				<div classname="post-list">
-					{data.allFile.edges.map((edge, i) => (
-						<postsummary postdetails={edge} key={i} />
-					))}
 				</div> */}
+				<div className="post-list">
+					{data.allFile.edges.map((edge, i) => (
+						<PostSummary postDetails={edge} key={i} />
+					))}
+				</div>
 			</div>
 		</Layout>
 	);

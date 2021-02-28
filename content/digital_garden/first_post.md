@@ -1,8 +1,6 @@
 ---
-title: First Post
+title: Hello World
 growthState: 'budding'
-datePlanted: 2021-01-19T18:01:45.681Z
-dateTended: 2021-01-19T18:01:45.681Z
+dateTended: 2021-02-01
+datePlanted: 2021-02-01
 ---
-
-<h1>Hello World</h1>

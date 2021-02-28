@@ -1,6 +1,6 @@
 const path = require('path');
 // Gatsby allows us to query our data and use that data to generate pages at build time
-// By programatically generating pages, we can build pages for each blog post using the
+// By programmatically generating pages, we can build pages for each blog post using the
 // post slug returned from the query
 exports.createPages = async ({ graphql, actions }) => {
 	// **Note:** The graphql function call returns a Promise
