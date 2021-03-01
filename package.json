@@ -16,6 +16,7 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "@deckdeckgo/highlight-code": "^2.5.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "gatsby": "^2.26.1",
@@ -23,8 +24,9 @@
     "gatsby-plugin-netlify-cms": "^4.7.0",
     "gatsby-plugin-sass": "^2.8.0",
     "gatsby-plugin-slug": "^1.1.1",
+    "gatsby-remark-highlight-code": "^2.2.0",
     "gatsby-source-filesystem": "^2.9.0",
-    "gatsby-transformer-remark": "^2.14.0",
+    "gatsby-transformer-remark": "^2.16.1",
     "lodash": "^4.17.20",
     "netlify-cms-app": "^2.14.8",
     "node-sass": "^4.14.1",
@@ -32,5 +34,8 @@
     "react-dom": "^16.13.1",
     "react-icons": "^4.2.0",
     "react-particles-js": "^3.4.1"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }

@@ -1,79 +1,124 @@
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
 .post-summary {
-	a {
-		font-size: 1.875rem;
-		color: $color-gray;
-		text-decoration: none;
+  a {
+    font-size: 1.875rem;
+    color: $color-gray;
+    text-decoration: none;
 
-		&:hover {
-			text-decoration: underline;
-		}
-	}
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
-	span {
-		color: $color-light-gray;
-		display: block;
-	}
+  .post-summary-data {
+    color: $color-light-gray;
+  }
+
+  span {
+    color: $color-light-gray;
+    display: block;
+  }
 }
 
 .post-date {
-	color: $color-light-gray;
-	display: block;
-	margin-top: 0.5rem;
+  color: $color-light-gray;
+  display: block;
+  margin-top: 0.5rem;
 }
 
 .garden-header-container {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6rem;
 
-	@media screen and (min-width: 768px) {
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: flex-start;
-	}
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.post-tags {
+  color: $color-off-white;
+  margin-bottom: 1rem;
+
+  span {
+    background: $color-black;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.75rem;
+  }
 }
 
 .post-sub-text {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	span {
-		display: block;
-		color: $color-light-gray;
-		margin-top: 0.5rem;
-		font-size: 1rem;
-		font-weight: normal;
-	}
+  span {
+    display: block;
+    color: $color-light-gray;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+  }
 }
 
 .post-filters {
-	display: flex;
-	font-size: 1rem;
-	flex-direction: column;
-	&__topic {
-		list-style-type: none;
-		padding: 0;
-		margin-top: 0;
-	}
+  display: flex;
+  font-size: 1rem;
+  flex-direction: column;
 
-	&__state {
-		list-style-type: none;
-		padding: 0;
+  &__topic {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
 
-		li {
-			float: left;
-			margin-right: 0.5em;
-		}
-	}
+    span {
+      cursor: pointer;
+      border-radius: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      margin-right: 0.75rem;
+      border: 1px solid $color-black;
+
+      &:hover {
+        background: $color-black;
+        color: $color-off-white;
+      }
+    }
+  }
+
+  &__state {
+    list-style-type: none;
+    padding: 0;
+
+    span {
+      cursor: pointer;
+      //padding: 0.25rem 0.5rem;
+      //background: $color-off-white;
+      margin-right: 1rem;
+
+      &:hover {
+        //background: $color-black;
+        //color: $color-off-white;
+        text-decoration: underline;
+        //border-bottom: 1px solid $color-black;
+      }
+    }
+
+    li {
+      float: left;
+      margin-right: 0.5em;
+    }
+  }
 }
 
 .post-list {
-	margin-top: 3rem;
+  margin-top: 3rem;
 }
 
 .post-body {
-	margin-top: 3rem;
-	color: $color-gray;
+  margin-top: 3rem;
+  color: $color-gray;
 }

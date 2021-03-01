@@ -71,24 +71,6 @@
 		display: flex;
 		margin: 0.75rem 0px 1.125rem 0px;
 		flex-wrap: wrap;
-
-		.skill {
-			font-size: 0.875rem;
-			background: $color-dark-gray;
-			color: $color-off-white;
-			padding: 0.5rem;
-			border-radius: 0.125rem;
-			margin: 0.25rem 0.5rem 0.25rem 0rem;
-
-			&:first-of-type {
-				margin-left: 0px;
-			}
-
-			&::selection {
-				background: $color-off-white;
-				color: $color-dark-gray;
-			}
-		}
 	}
 
 	a {

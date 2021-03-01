@@ -1,113 +1,128 @@
 // Gatsby
-import { Link } from 'gatsby';
-import {FaLeaf, FaSeedling, FaTree} from 'react-icons/fa';
+import { Link } from "gatsby";
 
 // React
-import React, { useReducer } from 'react';
+import React, { useReducer } from "react";
 
 // Components
-import Layout from '../components/Layout/Layout';
+import Layout from "../components/Layout/Layout";
+
+//Utils
+import iconsMap from "../utils/iconsMap";
 
 const PostSummary = ({ postDetails }) => {
-	console.log('postDetails', postDetails);
-	const { title, growthState, dateTended } = postDetails.node.childMarkdownRemark.frontmatter;
-	const { slug } = postDetails.node.childMarkdownRemark.fields;
-	const icons = {
-		'seedling': <FaSeedling />,
-		'budding': <FaLeaf />,
-		'evergreen': <FaTree />
-	};
-	return (
-		<div className="post-summary" style={{ marginBottom: '3rem' }}>
-			<Link to={slug}>{title}</Link>
-			<div style={{display: 'flex', alignItems: 'center', marginTop: '0.5rem'}}>
-				<span>{dateTended}</span>
-				<div style={{marginLeft: '1rem'}}>
-					{
-						icons[growthState]
-					}
-				</div>
-			</div>
-		</div>
-	);
+  const {
+    title,
+    growthState,
+    dateTended,
+    tags,
+  } = postDetails.node.childMarkdownRemark.frontmatter;
+  const { slug } = postDetails.node.childMarkdownRemark.fields;
+  return (
+    <div className="post-summary" style={{ marginBottom: "2.75rem" }}>
+      <Link to={slug}>{title}</Link>
+      <div
+        className="post-summary-data"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginTop: "0.5rem",
+          fontStyle: "italic",
+        }}
+      >
+        <small>{dateTended}</small>
+        <div style={{ marginLeft: "0.75rem" }}>{iconsMap[growthState]}</div>
+      </div>
+    </div>
+  );
 };
-const initialState = {"seedling": true, "budding": true, "evergreen": true};
+const initialState = { seedling: true, budding: true, evergreen: true };
 const reducer = (state, action) => {
-	switch (action.type) {
-		case 'seedling':
-			return {...state, 'seedling': !state['seedling']};
-		case 'budding':
-			return {...state, 'budding': !state['budding']};
-		case 'evergreen':
-			return {...state, 'evergreen': !state['evergreen']};
-		default:
-			throw new Error();
-	}
+  switch (action.type) {
+    case "seedling":
+      return { ...state, seedling: !state["seedling"] };
+    case "budding":
+      return { ...state, budding: !state["budding"] };
+    case "evergreen":
+      return { ...state, evergreen: !state["evergreen"] };
+    default:
+      throw new Error();
+  }
 };
 const DigitalGarden = ({ data }) => {
-	const [state, dispatch] = useReducer(reducer, initialState);
-	return (
-		<Layout>
-			<div className="page-body-container">
-				<p className="page-header">Digital Garden</p>
-				<p style={{ marginBottom: '3rem' }}>
-					labore magna mollit voluptate id incididunt ut consequat amet enim consectetur sunt. fugiat minim
-					laboris mollit adipisicing id mollit deserunt id qui eu sunt id culpa exercitation. occaecat officia
-					ut nostrud magna et lorem voluptate magna laborum quis ex ut. magna excepteur qui ex mollit commodo.
-				</p>
-				<div className="post-filters">
-					<ul className="post-filters__topic">tags here</ul>
-					<ul className="post-filters__state">
-						<li>
-							<button onClick={() => dispatch({type: 'seedling'})}>Seedling</button>
-						</li>
-						<li>
-							<button onClick={() => dispatch({type: 'budding'})}>Budding</button>
-						</li>
-						<li>
-							<button onClick={() => dispatch({type: 'evergreen'})}>Evergreen</button>
-						</li>
-					</ul>
-				</div>
-				{/* <div classname="selected-state">
-					<ul>
-						{state.map((selectedstate, i) => <li key={i}>
-							icons[selectedstate]
-						</li>)}
-					</ul>
-				</div> */}
-				<div className="post-list">
-					{data.allFile.edges.map((edge, i) => (
-						<PostSummary postDetails={edge} key={i} />
-					))}
-				</div>
-			</div>
-		</Layout>
-	);
+  let tags = [];
+  const growthStates = ["seedling", "budding", "evergreen"];
+  data.allFile.edges.forEach((edge) => {
+    tags = [
+      ...new Set([...tags, ...edge.node.childMarkdownRemark.frontmatter.tags]),
+    ];
+    //
+    // let postTags = edge.node.childMarkdownRemark.frontmatter.tags;
+    // tags = [...new Set([...tags, ...postTags])];
+  });
+  tags = tags.sort();
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <Layout>
+      <div className="page-body-container">
+        <p className="page-header">Digital Garden</p>
+        <p style={{ marginBottom: "3rem" }}>
+          labore magna mollit voluptate id incididunt ut consequat amet enim
+          consectetur sunt. fugiat minim laboris mollit adipisicing id mollit
+          deserunt id qui eu sunt id culpa exercitation. occaecat officia ut
+          nostrud magna et lorem voluptate magna laborum quis ex ut. magna
+          excepteur qui ex mollit commodo.
+        </p>
+        <div className="post-filters">
+          <ul className="post-filters__topic">
+            {tags.map((tag, i) => (
+              <span key={i}>{tag}</span>
+            ))}
+          </ul>
+          <ul className="post-filters__state">
+            {growthStates.map((growthState, i) => (
+              <span key={i} onClick={() => dispatch({ growth: growthState })}>
+                {growthState} {iconsMap[growthState]}
+              </span>
+            ))}
+          </ul>
+        </div>
+        <div className="post-list">
+          {data.allFile.edges.map((edge, i) => (
+            <PostSummary postDetails={edge} key={i} />
+          ))}
+        </div>
+      </div>
+    </Layout>
+  );
 };
 
 export default DigitalGarden;
 
 export const query = graphql`
-	query posts {
-		allFile(
-			filter: { sourceInstanceName: { eq: "content" }, dir: { regex: "/content/digital_garden/" } }
-			sort: { fields: childMarkdownRemark___frontmatter___dateTended, order: DESC }
-		) {
-			edges {
-				node {
-					childMarkdownRemark {
-						fields {
-							slug
-						}
-						frontmatter {
-							title
-							growthState
-							datePlanted(formatString: "mm.dd.yy")
-						}
-					}
-				}
-			}
-		}
-	}
+  query allPosts {
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "content" }
+        relativeDirectory: { eq: "digital_garden" }
+      }
+    ) {
+      edges {
+        node {
+          childMarkdownRemark {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              growthState
+              datePlanted(formatString: "MMM D, YYYY")
+              dateTended(formatString: "MMM D, YYYY")
+              tags
+            }
+          }
+        }
+      }
+    }
+  }
 `;

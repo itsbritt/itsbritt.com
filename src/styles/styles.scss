@@ -10,6 +10,9 @@
 // Roboto Regular
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap');
 
+// Roboto Mono Regular
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 // Variables
 @import './variables.scss';
 
@@ -30,6 +33,11 @@
 @import './pages/blog.scss';
 // Resume
 @import './pages/resume.scss';
+
+// Overwrite code font-family style
+:root{
+	--deckgo-highlight-code-font-family: 'Roboto Mono';
+}
 
 ::selection {
 	background: $color-dark-gray;

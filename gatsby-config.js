@@ -26,15 +26,23 @@ module.exports = {
 				// GitHub Flavored Markdown mode (default: true)
 				gfm: true,
 				// Plugins configs
-				plugins: []
+				plugins: [
+					{
+						resolve: `gatsby-remark-highlight-code`,
+						options: {
+							theme: 'nord',
+							terminal: 'carbon'
+						}
+					}
+				]
 			}
 		},
-		{
-			resolve: `gatsby-plugin-mdx`,
-			options: {
-				extensions: ['.mdx', '.md']
-			}
-		},
+		// {
+		// 	resolve: `gatsby-plugin-mdx`,
+		// 	options: {
+		// 		extensions: ['.mdx', '.md']
+		// 	}
+		// },
 		`gatsby-plugin-slug`,
 		`gatsby-plugin-sass`,
 		`gatsby-plugin-netlify-cms`
