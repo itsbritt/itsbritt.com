@@ -22,12 +22,11 @@ export default function BlogPost({ data }) {
     dateTended,
     tags,
   } = data.file.childMarkdownRemark.frontmatter;
-  console.log("tags", tags);
   const { html } = data.file.childMarkdownRemark;
   return (
     <Layout>
       <div className="page-body-container">
-        <p className="page-header" style={{ marginBottom: "1rem" }}>
+        <p className="page-header" style={{ marginBottom: "2rem" }}>
           {title}
         </p>
         <div className="post-tags">

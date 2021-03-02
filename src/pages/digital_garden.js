@@ -15,7 +15,6 @@ const PostSummary = ({ postDetails }) => {
     title,
     growthState,
     dateTended,
-    tags,
   } = postDetails.node.childMarkdownRemark.frontmatter;
   const { slug } = postDetails.node.childMarkdownRemark.fields;
   return (
@@ -27,28 +26,18 @@ const PostSummary = ({ postDetails }) => {
           display: "flex",
           alignItems: "center",
           marginTop: "0.5rem",
-          fontStyle: "italic",
         }}
       >
-        <small>{dateTended}</small>
-        <div style={{ marginLeft: "0.75rem" }}>{iconsMap[growthState]}</div>
+        <small>
+          {dateTended}&nbsp;&nbsp;{"|"}&nbsp;&nbsp;{growthState}&nbsp;&nbsp;
+          {iconsMap[growthState]}
+        </small>
+        <br />
       </div>
     </div>
   );
 };
-const initialState = { seedling: true, budding: true, evergreen: true };
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "seedling":
-      return { ...state, seedling: !state["seedling"] };
-    case "budding":
-      return { ...state, budding: !state["budding"] };
-    case "evergreen":
-      return { ...state, evergreen: !state["evergreen"] };
-    default:
-      throw new Error();
-  }
-};
+
 const DigitalGarden = ({ data }) => {
   let tags = [];
   const growthStates = ["seedling", "budding", "evergreen"];
@@ -56,12 +45,89 @@ const DigitalGarden = ({ data }) => {
     tags = [
       ...new Set([...tags, ...edge.node.childMarkdownRemark.frontmatter.tags]),
     ];
-    //
-    // let postTags = edge.node.childMarkdownRemark.frontmatter.tags;
-    // tags = [...new Set([...tags, ...postTags])];
   });
   tags = tags.sort();
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const initializeFilterState = (arr, initialState) =>
+    arr.reduce((acc, curr) => ((acc[curr] = initialState), acc), {});
+  const initialFilterState = {
+    growthStates: initializeFilterState(growthStates, null),
+    tags: initializeFilterState(tags, null),
+  };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "growthStates":
+        const isGrowthStateSelected = state.growthStates[action.payload];
+        return {
+          ...state,
+          growthStates: {
+            ...initializeFilterState(
+              growthStates,
+              isGrowthStateSelected ? null : false
+            ),
+            [action.payload]: isGrowthStateSelected
+              ? null
+              : !isGrowthStateSelected,
+          },
+        };
+      case "tags":
+        const isTagSelected = state.tags[action.payload];
+        const currentlySelectedTags = { ...state.tags };
+        for (const [key] of Object.entries(currentlySelectedTags)) {
+          if (!state.tags[key]) {
+            delete currentlySelectedTags[key];
+          }
+        }
+        let isOnlyTagSelected = true;
+        for (let key in state.tags) {
+          if (
+            state.tags.hasOwnProperty(key) &&
+            state.tags[key] &&
+            key !== action.payload
+          ) {
+            isOnlyTagSelected = false;
+            break;
+          }
+        }
+
+        const overwriteTags = () =>
+          isTagSelected && isOnlyTagSelected
+            ? initializeFilterState(tags, null)
+            : initializeFilterState(tags, false);
+        return {
+          ...state,
+          tags: {
+            ...overwriteTags(),
+            ...currentlySelectedTags,
+            [action.payload]:
+              isTagSelected && isOnlyTagSelected ? null : !isTagSelected,
+          },
+        };
+      default:
+        throw new Error();
+    }
+  };
+  const [state, dispatch] = useReducer(reducer, initialFilterState);
+  const allPosts = data.allFile.edges;
+  const filterPosts = (state, allPosts) => {
+    return allPosts.filter((post) => {
+      const { growthState, tags } = post.node.childMarkdownRemark.frontmatter;
+      const growthStateMatch = state.growthStates[growthState] !== false;
+      let tagsMatch = false;
+      let i = 0;
+      while (i < tags.length) {
+        let currentTag = tags[i];
+        if (state.tags[currentTag] !== false) {
+          tagsMatch = true;
+          break;
+        }
+        i++;
+      }
+      return tagsMatch && growthStateMatch;
+    });
+  };
+  // if no filters just return all posts
+  const filteredPosts = filterPosts(state, allPosts);
   return (
     <Layout>
       <div className="page-body-container">
@@ -76,21 +142,35 @@ const DigitalGarden = ({ data }) => {
         <div className="post-filters">
           <ul className="post-filters__topic">
             {tags.map((tag, i) => (
-              <span key={i}>{tag}</span>
+              <span
+                key={i}
+                onClick={() => dispatch({ type: "tags", payload: tag })}
+                className={state.tags[tag] ? "selected" : "unselected"}
+              >
+                {tag}
+              </span>
             ))}
           </ul>
           <ul className="post-filters__state">
             {growthStates.map((growthState, i) => (
-              <span key={i} onClick={() => dispatch({ growth: growthState })}>
+              <span
+                key={i}
+                onClick={() =>
+                  dispatch({ type: "growthStates", payload: growthState })
+                }
+                className={
+                  state.growthStates[growthState] ? "selected" : "unselected"
+                }
+              >
                 {growthState} {iconsMap[growthState]}
               </span>
             ))}
           </ul>
         </div>
         <div className="post-list">
-          {data.allFile.edges.map((edge, i) => (
-            <PostSummary postDetails={edge} key={i} />
-          ))}
+          {filteredPosts.map((post, i) => {
+            return <PostSummary postDetails={post} key={i} />;
+          })}
         </div>
       </div>
     </Layout>

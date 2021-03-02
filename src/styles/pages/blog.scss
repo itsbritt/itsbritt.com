@@ -5,6 +5,7 @@
     font-size: 1.875rem;
     color: $color-gray;
     text-decoration: none;
+    font-weight: bold;
 
     &:hover {
       text-decoration: underline;
@@ -42,7 +43,7 @@
 .post-tags {
   color: $color-off-white;
   margin-bottom: 1rem;
-
+  font-size: 0.875rem;
   span {
     background: $color-black;
     border-radius: 0.25rem;
@@ -59,14 +60,14 @@
     display: block;
     color: $color-light-gray;
     margin-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: normal;
   }
 }
 
 .post-filters {
   display: flex;
-  font-size: 1rem;
+  font-size: 0.875rem;
   flex-direction: column;
 
   &__topic {
@@ -82,9 +83,19 @@
       margin-right: 0.75rem;
       border: 1px solid $color-black;
 
-      &:hover {
+      &.selected {
         background: $color-black;
         color: $color-off-white;
+      }
+
+      &.unselected {
+        background: $color-off-white;
+        color: $color-black;
+
+        &:hover {
+          background: $color-black;
+          color: $color-off-white;
+        }
       }
     }
   }
@@ -95,15 +106,14 @@
 
     span {
       cursor: pointer;
-      //padding: 0.25rem 0.5rem;
-      //background: $color-off-white;
       margin-right: 1rem;
 
       &:hover {
-        //background: $color-black;
-        //color: $color-off-white;
-        text-decoration: underline;
-        //border-bottom: 1px solid $color-black;
+        border-bottom: 1px solid black;
+      }
+
+      &.selected {
+        border-bottom: 1px solid black;
       }
     }
 
