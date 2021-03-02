@@ -9,8 +9,16 @@ import Layout from "../components/Layout/Layout";
 
 //Utils
 import iconsMap from "../utils/iconsMap";
+import {
+  initializeFilterState,
+  isOnlySelectedTag,
+  filterTags,
+  filterPosts,
+  currentlySelectedTags,
+} from "../utils/filterHelpers";
+import { GROWTH_STATES } from "../utils/growthStates";
 
-const PostSummary = ({ postDetails }) => {
+const PostSummary = ({ postDetails, tabIndex }) => {
   const {
     title,
     growthState,
@@ -19,7 +27,9 @@ const PostSummary = ({ postDetails }) => {
   const { slug } = postDetails.node.childMarkdownRemark.fields;
   return (
     <div className="post-summary" style={{ marginBottom: "2.75rem" }}>
-      <Link to={slug}>{title}</Link>
+      <Link tabIndex={tabIndex} to={slug}>
+        {title}
+      </Link>
       <div
         className="post-summary-data"
         style={{
@@ -39,30 +49,27 @@ const PostSummary = ({ postDetails }) => {
 };
 
 const DigitalGarden = ({ data }) => {
-  let tags = [];
-  const growthStates = ["seedling", "budding", "evergreen"];
-  data.allFile.edges.forEach((edge) => {
-    tags = [
-      ...new Set([...tags, ...edge.node.childMarkdownRemark.frontmatter.tags]),
-    ];
-  });
-  tags = tags.sort();
-  const initializeFilterState = (arr, initialState) =>
-    arr.reduce((acc, curr) => ((acc[curr] = initialState), acc), {});
+  // Filtered Tags
+  const tags = filterTags(data.allFile.edges);
+
+  // Initial Filter State
   const initialFilterState = {
-    growthStates: initializeFilterState(growthStates, null),
+    growthStates: initializeFilterState(GROWTH_STATES, null),
     tags: initializeFilterState(tags, null),
   };
 
-  const reducer = (state, action) => {
+  // Filter Reducer
+  const gardenStateReducer = (state, action) => {
     switch (action.type) {
       case "growthStates":
         const isGrowthStateSelected = state.growthStates[action.payload];
         return {
           ...state,
           growthStates: {
+            // If growthState being de-selected is currently selected we need to remove all filters by setting everything to null
+            // If a new growthstate is selected, we need to set all others to false in order to apply filtering
             ...initializeFilterState(
-              growthStates,
+              GROWTH_STATES,
               isGrowthStateSelected ? null : false
             ),
             [action.payload]: isGrowthStateSelected
@@ -72,66 +79,44 @@ const DigitalGarden = ({ data }) => {
         };
       case "tags":
         const isTagSelected = state.tags[action.payload];
-        const currentlySelectedTags = { ...state.tags };
-        for (const [key] of Object.entries(currentlySelectedTags)) {
-          if (!state.tags[key]) {
-            delete currentlySelectedTags[key];
-          }
-        }
-        let isOnlyTagSelected = true;
-        for (let key in state.tags) {
-          if (
-            state.tags.hasOwnProperty(key) &&
-            state.tags[key] &&
-            key !== action.payload
-          ) {
-            isOnlyTagSelected = false;
-            break;
-          }
-        }
-
+        const isExactlyOneSelectedTag = isOnlySelectedTag(state, action);
+        const selectedTags = currentlySelectedTags(state);
+        // If we are de-selecting the only remaining selected tag, we want to set everything back to null in order to remove all filters
+        // Otherwise, we want to set all non-selected tags to false (since they are initialized as null). This initializes the filtering once the first tag is selected
         const overwriteTags = () =>
-          isTagSelected && isOnlyTagSelected
-            ? initializeFilterState(tags, null)
-            : initializeFilterState(tags, false);
+          initializeFilterState(
+            tags,
+            isTagSelected && isExactlyOneSelectedTag ? null : false
+          );
+
         return {
           ...state,
           tags: {
             ...overwriteTags(),
-            ...currentlySelectedTags,
+            // Since every tag that has not been selected was set to false, we need to overwrite the tags that have already been selected
+            ...selectedTags,
             [action.payload]:
-              isTagSelected && isOnlyTagSelected ? null : !isTagSelected,
+              isTagSelected && isExactlyOneSelectedTag ? null : !isTagSelected,
           },
         };
       default:
         throw new Error();
     }
   };
-  const [state, dispatch] = useReducer(reducer, initialFilterState);
+
+  // Filter State
+  const [state, dispatch] = useReducer(gardenStateReducer, initialFilterState);
+
+  // Filtered Posts
   const allPosts = data.allFile.edges;
-  const filterPosts = (state, allPosts) => {
-    return allPosts.filter((post) => {
-      const { growthState, tags } = post.node.childMarkdownRemark.frontmatter;
-      const growthStateMatch = state.growthStates[growthState] !== false;
-      let tagsMatch = false;
-      let i = 0;
-      while (i < tags.length) {
-        let currentTag = tags[i];
-        if (state.tags[currentTag] !== false) {
-          tagsMatch = true;
-          break;
-        }
-        i++;
-      }
-      return tagsMatch && growthStateMatch;
-    });
-  };
-  // if no filters just return all posts
   const filteredPosts = filterPosts(state, allPosts);
+
   return (
     <Layout>
       <div className="page-body-container">
+        {/* Page Header */}
         <p className="page-header">Digital Garden</p>
+        {/* Page Summary */}
         <p style={{ marginBottom: "3rem" }}>
           labore magna mollit voluptate id incididunt ut consequat amet enim
           consectetur sunt. fugiat minim laboris mollit adipisicing id mollit
@@ -139,34 +124,46 @@ const DigitalGarden = ({ data }) => {
           nostrud magna et lorem voluptate magna laborum quis ex ut. magna
           excepteur qui ex mollit commodo.
         </p>
+        {/* Filters */}
         <div className="post-filters">
           <ul className="post-filters__topic">
+            {/* Tags */}
             {tags.map((tag, i) => (
               <span
                 key={i}
+                role="button"
                 onClick={() => dispatch({ type: "tags", payload: tag })}
+                onKeyPress={() => dispatch({ type: "tags", payload: tag })}
                 className={state.tags[tag] ? "selected" : "unselected"}
+                tabIndex={0}
               >
                 {tag}
               </span>
             ))}
           </ul>
+          {/* Growth States */}
           <ul className="post-filters__state">
-            {growthStates.map((growthState, i) => (
+            {GROWTH_STATES.map((growthState, i) => (
               <span
                 key={i}
+                role="button"
+                tabIndex={0}
                 onClick={() =>
+                  dispatch({ type: "growthStates", payload: growthState })
+                }
+                onKeyPress={() =>
                   dispatch({ type: "growthStates", payload: growthState })
                 }
                 className={
                   state.growthStates[growthState] ? "selected" : "unselected"
                 }
               >
-                {growthState} {iconsMap[growthState]}
+                {growthState}
               </span>
             ))}
           </ul>
         </div>
+        {/* Filtered List of Posts */}
         <div className="post-list">
           {filteredPosts.map((post, i) => {
             return <PostSummary postDetails={post} key={i} />;
@@ -185,6 +182,10 @@ export const query = graphql`
       filter: {
         sourceInstanceName: { eq: "content" }
         relativeDirectory: { eq: "digital_garden" }
+      }
+      sort: {
+        fields: childMarkdownRemark___frontmatter___dateTended
+        order: DESC
       }
     ) {
       edges {

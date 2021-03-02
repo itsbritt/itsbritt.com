@@ -79,7 +79,7 @@
     span {
       cursor: pointer;
       border-radius: 0.25rem;
-      padding: 0.25rem 0.5rem;
+      padding: 0.125rem 0.25rem;
       margin-right: 0.75rem;
       border: 1px solid $color-black;
 
@@ -106,14 +106,20 @@
 
     span {
       cursor: pointer;
-      margin-right: 1rem;
+      margin-right: 0.75rem;
+      border-bottom: 2px solid $color-dark-gray;
+      padding: 0.125rem 0.25rem;
+      color: $color-black;
 
       &:hover {
-        border-bottom: 1px solid black;
+        border-bottom: 2px solid black;
       }
 
       &.selected {
-        border-bottom: 1px solid black;
+        border-bottom: 2px solid black;
+        background: $color-black;
+        color: $color-off-white;
+        border-radius: 0.25rem;
       }
     }
 
