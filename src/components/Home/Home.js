@@ -16,7 +16,6 @@ const Home = ({ data }) => {
 					<h3>{data.title}</h3>
 					<h5>{data.intro}</h5>
 				</div>
-				<div className="invisible-footer" style={{ height: '100px' }}></div>
 			</Layout>
 		</div>
 	);

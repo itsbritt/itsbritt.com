@@ -13,6 +13,9 @@
 // Roboto Mono Regular
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
+// Roboto Slab Regular
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 // Variables
 @import './variables.scss';
 
@@ -35,29 +38,34 @@
 @import './pages/resume.scss';
 
 // Overwrite code font-family style
-:root{
+:root {
 	--deckgo-highlight-code-font-family: 'Roboto Mono';
 }
 
 ::selection {
-	background: $color-dark-gray;
+	background: $color-black;
 	color: $color-off-white;
 }
 
 html {
 	font-size: 13px;
+	min-height: 100%;
 	@media screen and (min-width: 768px) {
 		font-size: 16px;
+	}
+
+	span[role='button'] {
+		outline: none;
 	}
 }
 
 body {
 	font-family: 'IBM Plex Sans', sans-serif;
-	color: $color-gray;
+	min-height: 100%;
 }
 
 p {
-	line-height: 1.7;
+	line-height: 2.5;
 	font-size: $font-size-base;
 }
 
@@ -78,4 +86,16 @@ small {
 		font-weight: 700;
 		color: $color-black;
 	}
+}
+
+.global-footer {
+	width: 100vw;
+	position: absolute;
+	bottom: 24px;
+	text-align: center;
+}
+
+.central-content {
+	font-family: 'Roboto Slab', sans-serif;
+	color: $color-dark-gray;
 }

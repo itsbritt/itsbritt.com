@@ -35,7 +35,5 @@
     "react-icons": "^4.2.0",
     "react-particles-js": "^3.4.1"
   },
-  "devDependencies": {
-    "prettier": "2.2.1"
-  }
+  "devDependencies": {}
 }
