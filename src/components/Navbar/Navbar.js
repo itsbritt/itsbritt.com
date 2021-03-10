@@ -11,7 +11,7 @@ const Navbar = () => {
 				<NavLink path="/resume" name="resume" />
 				<NavLink path="/digital_garden" name="digital garden" />
 			</div>
-			<div>
+			<div className="social-media">
 				<a href="https://github.com/itsbritt" target="_blank" rel="noreferrer" alt="Github icon">
 					github
 				</a>
