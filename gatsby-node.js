@@ -5,11 +5,10 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions }) => {
 	// **Note:** The graphql function call returns a Promise
 	const { createPage } = actions;
-
 	const result = await graphql(`
 		query Posts {
 			allFile(
-				filter: {sourceInstanceName: {eq: "content"}, relativeDirectory: {eq: "digital_garden"}}
+				filter: { absolutePath: { regex: "/content/digital_garden/garden/posts/" } }
 				sort: { fields: childMarkdownRemark___frontmatter___dateTended, order: DESC }
 			) {
 				edges {
@@ -27,8 +26,9 @@ exports.createPages = async ({ graphql, actions }) => {
 	`);
 
 	result.data.allFile.edges.forEach(({ node }) => {
+		const slug = `/digital_garden/${node.childMarkdownRemark.fields.slug.substring(29)}`;
 		createPage({
-			path: node.childMarkdownRemark.fields.slug,
+			path: slug,
 			component: path.resolve(`./src/templates/blog-post.js`),
 			context: {
 				// Data passed to context is available

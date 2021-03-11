@@ -17,10 +17,11 @@ import {
 	currentlySelectedTags
 } from '../utils/filterHelpers';
 import { GROWTH_STATES } from '../utils/growthStates';
+import { shortenSlug } from '../utils/slugAbbreviator';
 
 const PostSummary = ({ postDetails, tabIndex }) => {
 	const { title, growthState, dateTended } = postDetails.node.childMarkdownRemark.frontmatter;
-	const { slug } = postDetails.node.childMarkdownRemark.fields;
+	const slug = shortenSlug(postDetails.node.childMarkdownRemark.fields.slug);
 	return (
 		<div className="post-summary">
 			<Link tabIndex={tabIndex} to={slug}>
@@ -157,7 +158,7 @@ export default DigitalGarden;
 export const query = graphql`
 	query allPosts {
 		allFile(
-			filter: { sourceInstanceName: { eq: "content" }, relativeDirectory: { eq: "digital_garden" } }
+			filter: { absolutePath: { regex: "/content/digital_garden/garden/posts/" } }
 			sort: { fields: childMarkdownRemark___frontmatter___dateTended, order: DESC }
 		) {
 			edges {
