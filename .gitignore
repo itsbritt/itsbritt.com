@@ -4,3 +4,6 @@ public
 
 # Obsidian Files
 /content/digital_garden/.obsidian
+
+# Local Netlify folder
+.netlify

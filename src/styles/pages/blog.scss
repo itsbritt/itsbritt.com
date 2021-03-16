@@ -149,6 +149,14 @@
 .post-body {
 	margin-top: 3rem;
 	color: $color-gray;
+
+	p {
+		margin-block-end: 3rem;
+	}
+
+	em {
+		letter-spacing: -0.5px;
+	}
 }
 
 .post-header-divider {

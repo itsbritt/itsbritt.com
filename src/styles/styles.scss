@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 // IBM Plex Sans Bold
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap');
+// IBM Plex Sans Regular Italic
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital@1&display=swap');
 
 // Roboto Medium Italic
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap');
@@ -78,7 +80,7 @@ small {
 	max-width: 800px;
 	min-height: 100vh;
 	width: 88%;
-	margin: 0 auto;
+	margin: 0 auto 132px auto;
 	position: relative;
 
 	.page-header {

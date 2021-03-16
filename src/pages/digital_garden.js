@@ -106,8 +106,9 @@ const DigitalGarden = ({ data }) => {
 				<p className="page-header">Digital Garden</p>
 				{/* Page Summary */}
 				<p className="garden-intro central-content">
-					An open collection of notes, resources, sketches, and explorations I'm currently cultivating. Some
-					notes are Seedlings, some are budding, and some are fully grown Evergreen.
+					An evolving collection of technical notes I'm currently cultivating. The notes in this explorable
+					space will span a broad range of technical concepts, and each note can be mapped to a particular
+					state of growth: "Seedling", "Budding", or "Evergreen".
 				</p>
 				{/* Filters */}
 				<div className="post-filters">

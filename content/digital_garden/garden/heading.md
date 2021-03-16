@@ -1,0 +1,1 @@
+An evolving collection of technical notes I'm currently cultivating. The notes in this explorable space will span a broad range of technical concepts, and each can be mapped to a particular state of growth: "Seedling", "Budding", or "Evergreen".
