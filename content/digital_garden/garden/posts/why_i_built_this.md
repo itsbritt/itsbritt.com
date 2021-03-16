@@ -8,9 +8,9 @@ tags: ['digital garden']
 
 # Motivations
 
- I can't imagine where I would be in my career without the open-source community. Currently, the flow of information between me and that community is a one-way street. Like many other software developers, I have a desire to pay it forward, and the creation of a "Digital Garden" will be my first step toward doing so.
+ I can't imagine where I would be in my career without the open-source community. Unfortunately however, the current flow of information between me and that community is a one-way street. Like many other software developers, I have a desire to pay it forward, and the creation of a "Digital Garden" will be my first step toward doing so.
  
-My main motivation to become a so-called "digital gardener", however, is to accerelate my technical learning curve. I work primarily in the front-end development space, and the Javascript ecosystem moves at an overwhelming pace. My hope is that the underlying organizational principles of a digital garden will help boost by growth rate by enforcing a particular note-taking style centered around the concept of _evergreen notes_.
+My main motivation to become a so-called "digital gardener", however, is to accelerate my technical learning curve. I work primarily in the front-end development space, and the Javascript ecosystem moves at an overwhelming pace. My hope is that the underlying organizational principles of a digital garden will help boost my growth rate by enforcing a particular note-taking style centered around the concept of _evergreen notes_.
 
 _Evergreen notes_ are written and organized to evolve, contribute, and accumulate over time, across topics. This type of knowledge system diverges from the more traditional form of note-taking. While it's convenient to quickly jot down transient thoughts, we're often left with a collection of dissociated notes that get discarded over time. On the other hand, evergreen notes are organized by conceptual links rather than by chronological order.  By associating notes to one another using bi-directional links, I can absorb information in a manner that aligns a bit better with the natural associative processes of the human brain. Accordingly, my contributions to this site will live in a markdown editor called Obsidian, which helps enforce this organizational structure. (For more on the principles of evergreen notes, check out [Andy Matuschak's site](https://andymatuschak.org/))
 
@@ -21,9 +21,9 @@ Ever since becoming a software developer, I've wanted to start a blog. I have no
  
  # Enter Digital Gardening
  
-Fortunately, the digital garden has been popularized as an alternative to the traditional software blog, and its fundamentals are predicated on this idea of evergreen notes. Mike Caufield describes a digital garden as space that offers "_a different way of thinking about our online behaviour around information - one that accumulates personal knowledge over time in an explorable space._"  While my goal for learning any new technology falls somewhere between proficiency and mastery, a digital garden accommodates for all levels of competency by providing a flexible space designed for those with a growth-oriented mindset.
+Fortunately, the digital garden has been popularized as an alternative to the traditional software blog, and its fundamentals are predicated on this idea of evergreen note-taking. Mike Caufield describes a digital garden as space that offers "_a different way of thinking about our online behaviour around information - one that accumulates personal knowledge over time in an explorable space._"  While my goal for learning any new technology falls somewhere between proficiency and mastery, a digital garden accommodates for all levels of competency by providing a flexible space designed for those of us with a growth-oriented mindset.
 
-Unlike a traditional blog, a digital garden is not a well-polished repository of authoritative insights. Rather, it is a low-friction space for thoughts to be planted and tended to over time. Contributions should be frequent and at times, unapologetically messy. Such an environment significantly lowers the barrier to entry for creating a technical blog, which to me is the principal benefit of creating this website. 
+Unlike a traditional blog, a digital garden is not a well-polished repository of authoritative insights. Rather, it is a low-friction space for thoughts to be planted and tended to over time. Contributions should be frequent, and at times–unapologetically messy. Such an environment significantly lowers the barrier to entry for creating a technical blog, which to me is the principal benefit of creating this website. 
 
 # Vision
 
